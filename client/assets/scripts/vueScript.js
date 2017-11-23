@@ -34,6 +34,26 @@ new Vue({
         title: 'gambar3',
         url: 'http://i.imgur.com/xOIMvAe.jpg',
         like: 10
+      },
+      {
+        title: 'gambar4',
+        url: 'https://media.giphy.com/media/3o6ozxasMHDoJ2OP7i/giphy.gif',
+        like: 101
+      },
+      {
+        title: 'gambar5',
+        url: 'https://media.giphy.com/media/3owyoSto5zFwlusMP6/giphy.gif',
+        like: 125
+      },
+      {
+        title: 'gambar6',
+        url: 'https://media.giphy.com/media/l3vQXp5tX71G57cGc/giphy.gif',
+        like: 12
+      },
+      {
+        title: 'gambar7',
+        url: 'https://media.giphy.com/media/VGsT1jzgSQM5a/giphy.gif',
+        like: 127
       }
     ],
     image: ''

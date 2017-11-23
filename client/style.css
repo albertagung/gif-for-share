@@ -107,6 +107,7 @@ stylize any heading tags withing white-panel below
 }
 
 .footer {
+  padding-top: 20px;
   background-color: purple;
   width: 100%;
   position: fixed;
