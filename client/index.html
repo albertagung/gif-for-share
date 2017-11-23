@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Share your own picture!</a>
+            <a class="nav-link" href="#" id="upload">Share your own picture!</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -52,42 +52,47 @@
           <section id="pinBoot">
             <!-- Article Panel -->
               <vue-article :title="photo.title" :url="photo.url" :like="photo.like" v-for="photo in photos"/>
-            <!-- <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-              <h4><a href="#">Title 2</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <article class="white-panel"> <img src="http://i.imgur.com/xOIMvAe.jpg" alt="">
-              <h4><a href="#">Title 3</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </article>
-            <article class="white-panel"> <img src="http://i.imgur.com/3gXW3L3.jpg" alt="">
-              <h4><a href="#">Title 4</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <article class="white-panel"> <img src="http://i.imgur.com/o2RVMqm.jpg" alt="">
-              <h4><a href="#">Title 5</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <article class="white-panel"> <img src="http://i.imgur.com/kFFpuKA.jpg" alt="">
-              <h4><a href="#">Title 6</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </article>
-            <article class="white-panel"><img src="http://i.imgur.com/E9RmLPA.jpg" alt="">
-              <h4><a href="#">Title 7</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-              <h4><a href="#">Title 8</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article> -->
           </section>
         </div>
       </div>
+
+    <!-- Upload modal -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Upload an image</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div v-if="!image">
+              <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
+              <input type="file" @change="onFileChange">
+            </div>
+            <div v-else>
+              <img :src="image" />
+              <button @click="removeImage">Remove image</button>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row" style="padding-bottom: 20px">
+              <div class="col-md-12">
+                <p style="font-weight: bold">Insert title / description</p>
+                <input type="text" name="title" placeholder="input desc / title">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" style="border-color: black; background-color: #eee; color: black">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+  </div>
 
 
     <!-- Footer -->
@@ -109,5 +114,7 @@
     <script src="/assets/scripts/scriptPinterest.js"></script>
     <!-- Vue Script -->
     <script src="/assets/scripts/vueScript.js"></script>
+    <!-- Jquery script -->
+    <script src="/assets/scripts/plainScript.js"></script>
   </body>
 </html>
