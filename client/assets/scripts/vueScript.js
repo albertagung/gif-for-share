@@ -5,10 +5,10 @@ Vue.component('vue-article', {
   <article class="white-panel"><img :src="url" alt="">
     <h4>{{title}}</h4>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <button type="button" class="btn btn-success">Download</button>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <button type="button" class="btn btn-success">Liked: {{like}} times</button>
       </div>
     </div>

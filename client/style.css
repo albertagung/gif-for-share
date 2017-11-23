@@ -105,6 +105,10 @@ stylize any heading tags withing white-panel below
 .footer p {
   text-align: center
 }
-.footer hr {
-  width: auto
+
+.footer {
+  background-color: purple;
+  width: 100%;
+  position: fixed;
+  bottom: 0
 }
