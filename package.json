@@ -1,0 +1,27 @@
+{
+  "name": "gif-for-share",
+  "version": "1.0.0",
+  "description": "Share GIF Image",
+  "main": "index.js",
+  "scripts": {
+    "app": "node app.js",
+    "dev": "nodemon app.js",
+    "live": "live-server --host=localhost --ignore=node_modules --open=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomybudiman/gif-for-share.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomybudiman/gif-for-share/issues"
+  },
+  "homepage": "https://github.com/tomybudiman/gif-for-share#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4",
+    "multer": "^1.3.0"
+  }
+}
