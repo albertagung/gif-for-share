@@ -15,5 +15,7 @@ module.exports={
     }else{
       res.send({status:false});
     }
+  },
+  addLike:(req,res)=>{
   }
 };
