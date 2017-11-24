@@ -17,66 +17,51 @@ Vue.component('vue-article', {
 
 // Vue instance
 new Vue({
-  el: '#v',
-  data: {
-    photos: [
-      {
-        title: 'gambar1',
-        url: 'http://i.imgur.com/sDLIAZD.png',
-        like: 20
-      },
-      {
-        title: 'gamabr2',
-        url: 'http://i.imgur.com/8lhFhc1.gif',
-        like: 30
-      },
-      {
-        title: 'gambar3',
-        url: 'http://i.imgur.com/xOIMvAe.jpg',
-        like: 10
-      },
-      {
-        title: 'gambar4',
-        url: 'https://media.giphy.com/media/3o6ozxasMHDoJ2OP7i/giphy.gif',
-        like: 101
-      },
-      {
-        title: 'gambar5',
-        url: 'https://media.giphy.com/media/3owyoSto5zFwlusMP6/giphy.gif',
-        like: 125
-      },
-      {
-        title: 'gambar6',
-        url: 'https://media.giphy.com/media/l3vQXp5tX71G57cGc/giphy.gif',
-        like: 12
-      },
-      {
-        title: 'gambar7',
-        url: 'https://media.giphy.com/media/VGsT1jzgSQM5a/giphy.gif',
-        like: 127
-      }
-    ],
-    image: ''
+  el:"#app",
+  data:{
+    photos:null,
+    imageFile:null,
+    imagePreview:null,
+    inputTitle:null,
+    host:"http://tomybudiman.cf:3000/"
   },
-  methods: {
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
+  created:function(){
+    this.getPostFromDB();
+  },
+  methods:{
+    getPostFromDB:function(){
+      axios.get(this.host+"api/gif/getAll").then(function({data}){
+        console.log(data);
+      }).catch(function(err){
+        console.log(err);
+      });
+    },
+    readFile:function(){
+      var inputFile=event.target.files || event.dataTransfer.files;
+      if(!inputFile.length){
         return;
-      this.createImage(files[0]);
+      }else{
+        var reader=new FileReader();
+        reader.addEventListener("load",function(e){
+          this.imagePreview = e.target.result;
+        }.bind(this));
+        reader.readAsDataURL(inputFile[0]);
+        this.imageFile=inputFile[0];
+      }
     },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
-
-      reader.onload = (e) => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
+    uploadImage:function(){
+      var image=new FormData();
+      image.append("image",this.imageFile);
+      image.append("title",this.inputTitle);
+      axios.post(this.host+"api/gif/upload",image).then(function({data}){
+        console.log(data);
+      }).catch(function(err){
+        console.log(err);
+      });
     },
-    removeImage: function (e) {
-      this.image = '';
+    removeImage:function(){
+      this.imageFile=null;
+      this.imagePreview=null;
     }
   }
 })
