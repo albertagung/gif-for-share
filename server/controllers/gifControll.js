@@ -1,4 +1,5 @@
 const Gif=require("../models/gifModel");
+const ObjectId=require('mongodb').ObjectID;
 
 module.exports={
   upload:(req,res)=>{
@@ -27,7 +28,11 @@ module.exports={
     Gif.findOne({
       "_id":ObjectId(req.params.id)
     }).then((result)=>{
-      res.send({status:false,data:result});
+      Gif.updateOne({"_id":ObjectId(req.params.id)},{
+        likes:result.likes + 1
+      }).then((updateStat)=>{
+        res.send({status:true,data:updateStat});
+      });
     }).catch((err)=>{
       res.send({status:false,msg:"Failed to add like!"});
     });

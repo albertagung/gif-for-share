@@ -36,43 +36,43 @@
           <hr>
           <section id="pinBoot">
             <!-- Article Panel -->
-            <vue-article v-for="(photo,index) in photos" :key="index" :post="photo"/>
+            <vue-article v-for="(photo,index) in photos" :key="index" :post="photo" v-on:addlike="addLike"/>
           </section>
         </div>
       </div>
       <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Upload an image</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div v-if="!imagePreview">
-              <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
-              <input type="file" @change="readFile">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Upload an image</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div v-else>
-              <img :src="imagePreview" alt="Image Preview"/>
-              <button @click="removeImage">Remove image</button>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row" style="padding-bottom: 20px">
-              <div class="col-md-12">
-                <p style="font-weight: bold">Insert title / description</p>
-                <input type="text" name="title" placeholder="GIF Title" v-model="inputTitle">
+            <div class="modal-body">
+              <div v-if="!imagePreview">
+                <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
+                <input type="file" @change="readFile">
+              </div>
+              <div v-else>
+                <img :src="imagePreview" alt="Image Preview"/>
+                <button @click="removeImage">Remove image</button>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="uploadImage" style="border-color: black; background-color: #eee; color: black">Save changes</button>
+            <div class="container">
+              <div class="row" style="padding-bottom: 20px">
+                <div class="col-md-12">
+                  <p style="font-weight: bold">Insert title / description</p>
+                  <input type="text" name="title" placeholder="GIF Title" v-model="inputTitle">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" @click="uploadImage" style="border-color: black; background-color: #eee; color: black">Save changes</button>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -91,7 +91,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $('#upload').click(function(){
-          $('#uploadModal').modal('show')
+          $('#uploadModal').modal("show");
         });
       });
     </script>
