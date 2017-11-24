@@ -1,8 +1,12 @@
 // Vue components register
-Vue.component('vue-article', {
+Vue.component("vue-article",{
   props: ["post"],
   template:`
-  <article class="white-panel"><img :src="post.imgUrl" :alt="post.title">
+  <article class="white-panel">
+    <a class="share-to-facebook" target="_blank" :href="imgUrl">
+      <input type="button" value="Share to Facebook">
+    </a>
+    <img :src="post.imgUrl" :alt="post.title">
     <h4>{{post.title}}</h4>
     <div class="row">
       <div class="col-lg-6">
@@ -13,11 +17,19 @@ Vue.component('vue-article', {
       </div>
     </div>
   </article>`,
+  data:function() {
+    return{
+      imgUrl:"https://www.facebook.com/sharer/sharer.php?u="+this.post.imgUrl
+    }
+  },
   methods:{
     likePost:function(){
       this.$emit("addlike",{
         postId:this.post._id
       });
+    },
+    testurl:function(){
+      return "ok";
     }
   }
 })
