@@ -51,7 +51,7 @@
             <div class="modal-body">
               <div v-if="!imageFile">
                 <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
-                <input type="file" v-on:change="readFile">
+                <input type="file" v-on:change="readFile" accept="image/gif">
               </div>
               <div v-else>
                 <img :src="imagePreview" alt="Image Preview"/>
@@ -88,7 +88,7 @@
     <!-- Pinterest Grid Script -->
     <script src="./assets/js/scriptPinterest.js"></script>
     <!-- Vue Script -->
-    <script src="./assets/js/vueScript.js"></script>
+    <script src="https://storage.googleapis.com/gify.tomybudiman.cf/assets/js/vueScript.js"></script>
     <!-- Jquery script -->
     <script type="text/javascript">
     $(document).ready(function(){

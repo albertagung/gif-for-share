@@ -3,14 +3,14 @@ Vue.component("vue-article",{
   props: ["post"],
   template:`
   <article class="white-panel">
-    <a class="share-to-facebook" target="_blank" :href="imgUrl">
+    <a class="share-to-facebook" target="_blank" :href="fbUrl">
       <input type="button" value="Share to Facebook">
     </a>
     <img :src="post.imgUrl" :alt="post.title">
     <h4>{{post.title}}</h4>
     <div class="row">
       <div class="col-lg-6">
-        <button type="button" class="btn btn-success">Download</button>
+        <a class="btn btn-success" role="button" :href="imgUrl" download="imgUrl" id="downButton">Downlaod</a>
       </div>
       <div class="col-lg-6">
         <button type="button" class="btn btn-success" @click="likePost">Liked: {{post.likes}} times</button>
@@ -19,7 +19,8 @@ Vue.component("vue-article",{
   </article>`,
   data:function() {
     return{
-      imgUrl:"https://www.facebook.com/sharer/sharer.php?u="+this.post.imgUrl
+      fbUrl:"https://www.facebook.com/sharer/sharer.php?u="+this.post.imgUrl,
+      imgUrl:this.post.imgUrl
     }
   },
   methods:{
@@ -27,9 +28,6 @@ Vue.component("vue-article",{
       this.$emit("addlike",{
         postId:this.post._id
       });
-    },
-    testurl:function(){
-      return "ok";
     }
   }
 })
