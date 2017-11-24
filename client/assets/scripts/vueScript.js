@@ -6,7 +6,7 @@ Vue.component('vue-article', {
     <h4>{{title}}</h4>
     <div class="row">
       <div class="col-lg-6">
-        <button type="button" class="btn btn-success">Download</button>
+        <a class="btn btn-success" role="button" :href="url" id="downButton" download="myImage">Download</a>
       </div>
       <div class="col-lg-6">
         <button type="button" class="btn btn-success">Liked: {{like}} times</button>
