@@ -1,0 +1,144 @@
+body {
+ background-color:#fff;
+ font-family: 'Roboto', sans-serif
+}
+
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.white-panel {
+  position: absolute;
+  background: white;
+}
+/*
+stylize any heading tags withing white-panel below
+*/
+.share-to-facebook {
+  position: absolute;
+}
+
+.share-to-facebook input {
+  color: #FFF;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  background-color: rgba(59,89,152,.80);
+}
+
+.white-panel h1 {
+  font-size: 1em;
+}
+.white-panel h1 a {
+  color: #A92733;
+}
+.white-panel:hover {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  background-color: #eee;
+  margin-top: -5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.white-panel:hover button {
+  opacity: 1
+}
+
+.white-panel:hover #downButton {
+  opacity: 1
+}
+
+.white-panel:hover h4 {
+  opacity: 1
+}
+
+.white-panel button {
+  width: 120px;
+}
+
+.white-panel #downButton {
+  width: 120px;
+}
+
+.white-panel .row {
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px
+}
+
+.white-panel h4 {
+  font-size: 14px;
+  font-weight: bold
+}
+
+.white-panel button {
+  background-color: #eee;
+  font-size: 12px;
+  color: black;
+  border-color: black;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.white-panel #downButton {
+  background-color: #eee;
+  font-size: 12px;
+  color: black;
+  border-color: black;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.white-panel h4 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #eee;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.white-panel button:hover {
+  background-color: gray;
+}
+
+.white-panel #downButton:hover {
+  background-color: gray;
+  color: white
+}
+
+/*Navbar Styling*/
+.navbar {
+  margin-bottom: 2em
+}
+
+.navbar button {
+  border-color: red;
+  color: red
+}
+
+/*Footer*/
+.footer p {
+  text-align: center
+}
+
+.footer {
+  padding-top: 20px;
+  background-color: purple;
+  width: 100%;
+  position: fixed;
+  bottom: 0
+}
