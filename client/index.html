@@ -8,6 +8,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/dist/jssocials.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/dist/jssocials-theme-flat.css" />
+    <script src="../assets/dist/jssocials.js"></script>
+    
+    
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="style.css">
@@ -20,6 +26,7 @@
 
     <!-- Vue Script -->
     <script src="https://unpkg.com/vue"></script>
+    
 
   </head>
   <body>
@@ -45,6 +52,7 @@
 
 
     <!-- Pinterest Grid Style -->
+
     <div id="v">
       <div class="container" style="padding-top: 100px; padding-bottom: 2em">
         <div class="row">
@@ -53,8 +61,12 @@
             <!-- Article Panel -->
               <vue-article :title="photo.title" :url="photo.url" :like="photo.like" v-for="photo in photos"/>
           </section>
+          </div>
+
         </div>
       </div>
+     
+
 
     <!-- Upload modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,10 +105,15 @@
     </div>
 
   </div>
-
+  
+ 
+    
+   
+    
+  <div id="share"></div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" id="footer">
       <p style="color: white">Copyright Hacktiv8</p>
     </div>
 
@@ -111,5 +128,9 @@
     <script src="/assets/scripts/vueScript.js"></script>
     <!-- Jquery script -->
     <script src="/assets/scripts/plainScript.js"></script>
+    <!-- Share jSocial -->
+    <script src="../assets/dist/jssocials.min.js"></script> 
+    <script src="/assets/scripts/share.js"></script>
+
   </body>
 </html>
