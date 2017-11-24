@@ -1,9 +1,3 @@
-/*
-Ref:
-Thanks to:
-http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Style-Grid-Layout-Pinterest-Grid.html
-*/
-
 body {
  background-color:#fff;
  font-family: 'Roboto', sans-serif
@@ -28,6 +22,19 @@ img {
 /*
 stylize any heading tags withing white-panel below
 */
+.share-to-facebook {
+  position: absolute;
+}
+
+.share-to-facebook input {
+  color: #FFF;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  background-color: rgba(59,89,152,.80);
+}
 
 .white-panel h1 {
   font-size: 1em;

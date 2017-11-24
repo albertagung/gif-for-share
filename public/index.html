@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Gify | Share The Happiness</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.2/bricklayer.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.2/bricklayer.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Gify | Share The Happiness</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="upload">Share your own picture!</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Post -->
+    <div id="app">
+      <!-- Post List -->
+      <div class="container" style="padding-top: 100px; padding-bottom: 2em">
+        <div class="row">
+          <hr>
+          <section id="pinBoot">
+            <vue-article v-for="(photo,index) in photos" @addlike="addLike" :post="photo" :key="index"/>
+          </section>
+        </div>
+      </div>
+      <!-- Upload modal -->
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Upload an image</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div v-if="!imageFile">
+                <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
+                <input type="file" v-on:change="readFile">
+              </div>
+              <div v-else>
+                <img :src="imagePreview" alt="Image Preview"/>
+                <button @click="removeImage">Remove image</button>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row" style="padding-bottom: 20px">
+                <div class="col-md-12">
+                  <p style="font-weight: bold">Insert title / description</p>
+                  <input type="text" name="title" v-model="inputTitle" placeholder="input desc / title">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" style="border-color: black; background-color: #eee; color: black" @click="uploadImage">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+      <p style="color: white">Copyright Hacktiv8</p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- Pinterest Grid Script -->
+    <script src="./assets/js/scriptPinterest.js"></script>
+    <!-- Vue Script -->
+    <script src="./assets/js/vueScript.js"></script>
+    <!-- Jquery script -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#upload').click(function(){
+        $('#uploadModal').modal('show')
+      });
+    });
+    </script>
+  </body>
+</html>
