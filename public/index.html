@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Gify | Share The Happiness</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./assets/dist/jssocials.css">
-    <link rel="stylesheet" type="text/css" href="./assets/dist/jssocials-theme-flat.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js"></script>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Gify</a>
+      <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,25 +25,22 @@
             <a class="nav-link" href="#" id="upload">Share your own picture!</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
 
     <!-- Pinterest Grid Style -->
     <div id="app">
+      <!-- Post List -->
       <div class="container" style="padding-top: 100px; padding-bottom: 2em">
         <div class="row">
           <hr>
           <section id="pinBoot">
-            <vue-article v-for="(photo,index) in photos" :key="index" :post="photo" v-on:addlike="addLike"/>
+            <vue-article v-for="(photo,index) in photos" :post="photo" :key="index"/>
           </section>
         </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- Upload modal -->
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -52,9 +50,9 @@
               </button>
             </div>
             <div class="modal-body">
-              <div v-if="!imagePreview">
+              <div v-if="!imageFile">
                 <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
-                <input type="file" @change="readFile">
+                <input type="file" v-on:change="readFile">
               </div>
               <div v-else>
                 <img :src="imagePreview" alt="Image Preview"/>
@@ -65,43 +63,43 @@
               <div class="row" style="padding-bottom: 20px">
                 <div class="col-md-12">
                   <p style="font-weight: bold">Insert title / description</p>
-                  <input type="text" name="title" placeholder="GIF Title" v-model="inputTitle">
+                  <input type="text" name="title" placeholder="input desc / title">
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" @click="uploadImage" style="border-color: black; background-color: #eee; color: black">Save changes</button>
+              <button type="button" class="btn btn-primary" style="border-color: black; background-color: #eee; color: black" @click="uploadImage">Save changes</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="share"></div>
+
     <!-- Footer -->
     <div class="footer" id="footer">
       <p style="color: white">Copyright Hacktiv8</p>
     </div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js">
-    </script>
-    <script src="./assets/dist/jssocials.js"></script>
-    <script src="./assets/js/share.js"></script>
-    <!-- Jquery script -->
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#upload').click(function(){
-          $('#uploadModal').modal("show");
-        });
-      });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <!-- Pinterest Grid Script -->
     <script src="./assets/js/scriptPinterest.js"></script>
     <!-- Vue Script -->
     <script src="./assets/js/vueScript.js"></script>
+    <!-- Jquery script -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#upload').click(function(){
+        $('#uploadModal').modal('show')
+      });
+    });
+    </script>
+    <!-- Share jSocial -->
+    <script src="./assets/dist/jssocials.min.js"></script>
+    <script src="./assets/js/share.js"></script>
   </body>
 </html>
