@@ -12,8 +12,8 @@
     <link rel="stylesheet" type="text/css" href="../assets/dist/jssocials.css" />
     <link rel="stylesheet" type="text/css" href="../assets/dist/jssocials-theme-flat.css" />
     <script src="../assets/dist/jssocials.js"></script>
-    
-    
+
+
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="style.css">
@@ -26,7 +26,7 @@
 
     <!-- Vue Script -->
     <script src="https://unpkg.com/vue"></script>
-    
+
 
   </head>
   <body>
@@ -43,16 +43,15 @@
             <a class="nav-link" href="#" id="upload">Share your own picture!</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <div id="share"></div>
+          </li>
+        </ul>
       </div>
     </nav>
 
-
     <!-- Pinterest Grid Style -->
-
     <div id="v">
       <div class="container" style="padding-top: 100px; padding-bottom: 2em">
         <div class="row">
@@ -65,7 +64,7 @@
 
         </div>
       </div>
-     
+
 
 
     <!-- Upload modal -->
@@ -104,17 +103,10 @@
       </div>
     </div>
 
-  </div>
-  
- 
-    
-   
-    
-  <div id="share"></div>
-
     <!-- Footer -->
     <div class="footer" id="footer">
       <p style="color: white">Copyright Hacktiv8</p>
+      <div id="share"></div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -129,7 +121,7 @@
     <!-- Jquery script -->
     <script src="/assets/scripts/plainScript.js"></script>
     <!-- Share jSocial -->
-    <script src="../assets/dist/jssocials.min.js"></script> 
+    <script src="../assets/dist/jssocials.min.js"></script>
     <script src="/assets/scripts/share.js"></script>
 
   </body>
