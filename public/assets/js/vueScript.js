@@ -1,15 +1,15 @@
 // Vue components register
 Vue.component('vue-article', {
-  props: ['title','url','like'],
-  template: `
-  <article class="white-panel"><img :src="url" alt="">
-    <h4>{{title}}</h4>
+  props: ["post"],
+  template:`
+  <article class="white-panel"><img :src="post.imgUrl" alt="">
+    <h4>{{post.title}}</h4>
     <div class="row">
       <div class="col-lg-6">
         <button type="button" class="btn btn-success">Download</button>
       </div>
       <div class="col-lg-6">
-        <button type="button" class="btn btn-success">Liked: {{like}} times</button>
+        <button type="button" class="btn btn-success">Liked: {{post.likes}} times</button>
       </div>
     </div>
   </article>`
@@ -31,8 +31,8 @@ new Vue({
   methods:{
     getPostFromDB:function(){
       axios.get(this.host+"api/gif/getAll").then(function({data}){
-        console.log(data);
-      }).catch(function(err){
+        this.photos=data.posts;
+      }.bind(this)).catch(function(err){
         console.log(err);
       });
     },
