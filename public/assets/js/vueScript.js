@@ -2,7 +2,7 @@
 Vue.component('vue-article', {
   props: ["post"],
   template:`
-  <article class="white-panel"><img :src="post.imgUrl" alt="">
+  <article class="white-panel"><img :src="post.imgUrl" :alt="post.title">
     <h4>{{post.title}}</h4>
     <div class="row">
       <div class="col-lg-6">
