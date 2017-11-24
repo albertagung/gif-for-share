@@ -1,32 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello, world!</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
-    <!-- Own CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Fontawsome -->
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-    <!-- Fonts -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Gify | Share The Happiness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-    <!-- Vue Script -->
-    <script src="https://unpkg.com/vue"></script>
-
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js"></script>
   </head>
   <body>
-
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Gify</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,22 +29,19 @@
       </div>
     </nav>
 
-
     <!-- Pinterest Grid Style -->
-    <div id="v">
+    <div id="app">
       <div class="container" style="padding-top: 100px; padding-bottom: 2em">
         <div class="row">
           <hr>
           <section id="pinBoot">
             <!-- Article Panel -->
-              <vue-article :title="photo.title" :url="photo.url" :like="photo.like" v-for="photo in photos"/>
+            <vue-article v-for="(photo,index) in photos" :key="index" :title="photo.title" :url="photo.url" :like="photo.like"/>
           </section>
         </div>
       </div>
-
-    <!-- Upload modal -->
-    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Upload an image</h5>
@@ -67,12 +50,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <div v-if="!image">
+            <div v-if="!imagePreview">
               <p style="font-weight: bold" style="padding-bottom: 20px">Upload</p>
-              <input type="file" @change="onFileChange">
+              <input type="file" @change="readFile">
             </div>
             <div v-else>
-              <img :src="image" />
+              <img :src="imagePreview" alt="Image Preview"/>
               <button @click="removeImage">Remove image</button>
             </div>
           </div>
@@ -80,36 +63,41 @@
             <div class="row" style="padding-bottom: 20px">
               <div class="col-md-12">
                 <p style="font-weight: bold">Insert title / description</p>
-                <input type="text" name="title" placeholder="input desc / title">
+                <input type="text" name="title" placeholder="GIF Title" v-model="inputTitle">
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="border-color: black; background-color: #eee; color: black">Save changes</button>
+            <button type="button" class="btn btn-primary" @click="uploadImage" style="border-color: black; background-color: #eee; color: black">Save changes</button>
           </div>
         </div>
       </div>
+      </div>
     </div>
-
-  </div>
-
 
     <!-- Footer -->
     <div class="footer">
       <p style="color: white">Copyright Hacktiv8</p>
     </div>
 
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <!-- Pinterest Grid Script -->
-    <script src="/assets/scripts/scriptPinterest.js"></script>
-    <!-- Vue Script -->
-    <script src="/assets/scripts/vueScript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js">
+    </script>
     <!-- Jquery script -->
-    <script src="/assets/scripts/plainScript.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#upload').click(function(){
+          $('#uploadModal').modal('show')
+        });
+      });
+    </script>
+    <!-- Pinterest Grid Script -->
+    <script src="./assets/js/scriptPinterest.js"></script>
+    <!-- Vue Script -->
+    <script src="./assets/js/vueScript.js"></script>
   </body>
 </html>

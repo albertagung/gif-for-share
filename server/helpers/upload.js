@@ -25,9 +25,9 @@ const sendUploadToGCS=(req,res,next)=>{
   // Memberi nama random pada file yang akan diupload
   const extRgx=/(?:\.([^.]+))?$/;
   const fileExt=extRgx.exec(req.file.originalname)[0];
-  const randomName=randomstring.generate({length:50,charset:"alphanumeric"});
+  const randomName=randomstring.generate({length:40,charset:"alphanumeric"});
   const gcsname=randomName+fileExt;
-  const file=bucket.file(gcsname);
+  const file=bucket.file(`upload/${new Date().getFullYear()}/${gcsname}`);
 
   // Memulai proses upload
   const stream=file.createWriteStream({

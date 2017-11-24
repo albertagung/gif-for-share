@@ -16,6 +16,13 @@ module.exports={
       res.send({status:false});
     }
   },
+  getAll:(req,res)=>{
+    Gif.find().then((posts)=>{
+      res.send({status:true,posts:posts});
+    }).catch((err)=>{
+      res.send({status:false,msg:"Failed to retrieve posts from DB!"});
+    });
+  },
   addLike:(req,res)=>{
     Gif.findOne({
       "_id":ObjectId(req.params.id)

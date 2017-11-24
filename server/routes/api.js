@@ -9,6 +9,9 @@ router.post("/gif/upload",
   gifControll.upload
 );
 
+// Retrieve all posts from database
+router.get("/gif/getAll",gifControll.getAll);
+
 // Add like to GIF post
 router.post("/gif/like/:id",gifControll.addLike);
 
