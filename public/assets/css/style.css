@@ -117,7 +117,7 @@ stylize any heading tags withing white-panel below
 
 .white-panel #downButton:hover {
   background-color: gray;
-  color: white
+  color: white;
 }
 
 /*Navbar Styling*/
