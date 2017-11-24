@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/dist/jssocials.css">
+    <link rel="stylesheet" type="text/css" href="./assets/dist/jssocials-theme-flat.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js"></script>
   </head>
   <body>
@@ -35,11 +37,11 @@
         <div class="row">
           <hr>
           <section id="pinBoot">
-            <!-- Article Panel -->
             <vue-article v-for="(photo,index) in photos" :key="index" :post="photo" v-on:addlike="addLike"/>
           </section>
         </div>
       </div>
+      <!-- Modal -->
       <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -75,9 +77,9 @@
         </div>
       </div>
     </div>
-
+    <div id="share"></div>
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" id="footer">
       <p style="color: white">Copyright Hacktiv8</p>
     </div>
 
@@ -87,6 +89,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js">
     </script>
+    <script src="./assets/dist/jssocials.js"></script>
+    <script src="./assets/js/share.js"></script>
     <!-- Jquery script -->
     <script type="text/javascript">
       $(document).ready(function(){
