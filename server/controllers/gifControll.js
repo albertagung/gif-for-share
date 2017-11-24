@@ -17,5 +17,12 @@ module.exports={
     }
   },
   addLike:(req,res)=>{
+    Gif.findOne({
+      "_id":ObjectId(req.params.id)
+    }).then((result)=>{
+      res.send({status:false,data:result});
+    }).catch((err)=>{
+      res.send({status:false,msg:"Failed to add like!"});
+    });
   }
 };
